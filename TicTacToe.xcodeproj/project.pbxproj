@@ -10,6 +10,10 @@
 		DCE4427616CAF16C009D60FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE4427516CAF16C009D60FF /* Foundation.framework */; };
 		DCE4427916CAF16C009D60FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE4427816CAF16C009D60FF /* main.m */; };
 		DCE4427D16CAF16C009D60FF /* TicTacToe.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = DCE4427C16CAF16C009D60FF /* TicTacToe.1 */; };
+		DCE4429D16CC49A6009D60FF /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE4429C16CC49A5009D60FF /* Game.m */; };
+		DCE442A016CC4A26009D60FF /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE4429F16CC4A26009D60FF /* Board.m */; };
+		DCE442A316CC4AE8009D60FF /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE442A216CC4AE8009D60FF /* Player.m */; };
+		DCE442A916CC6226009D60FF /* Computer.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE442A816CC6226009D60FF /* Computer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +35,14 @@
 		DCE4427816CAF16C009D60FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DCE4427B16CAF16C009D60FF /* TicTacToe-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TicTacToe-Prefix.pch"; sourceTree = "<group>"; };
 		DCE4427C16CAF16C009D60FF /* TicTacToe.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TicTacToe.1; sourceTree = "<group>"; };
+		DCE4429B16CC49A5009D60FF /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		DCE4429C16CC49A5009D60FF /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		DCE4429E16CC4A26009D60FF /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
+		DCE4429F16CC4A26009D60FF /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
+		DCE442A116CC4AE8009D60FF /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		DCE442A216CC4AE8009D60FF /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		DCE442A716CC6225009D60FF /* Computer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Computer.h; sourceTree = "<group>"; };
+		DCE442A816CC6226009D60FF /* Computer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Computer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +86,14 @@
 			isa = PBXGroup;
 			children = (
 				DCE4427816CAF16C009D60FF /* main.m */,
+				DCE4429B16CC49A5009D60FF /* Game.h */,
+				DCE4429C16CC49A5009D60FF /* Game.m */,
+				DCE442A716CC6225009D60FF /* Computer.h */,
+				DCE442A816CC6226009D60FF /* Computer.m */,
+				DCE442A116CC4AE8009D60FF /* Player.h */,
+				DCE442A216CC4AE8009D60FF /* Player.m */,
+				DCE4429E16CC4A26009D60FF /* Board.h */,
+				DCE4429F16CC4A26009D60FF /* Board.m */,
 				DCE4427C16CAF16C009D60FF /* TicTacToe.1 */,
 				DCE4427A16CAF16C009D60FF /* Supporting Files */,
 			);
@@ -140,6 +160,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCE4427916CAF16C009D60FF /* main.m in Sources */,
+				DCE4429D16CC49A6009D60FF /* Game.m in Sources */,
+				DCE442A016CC4A26009D60FF /* Board.m in Sources */,
+				DCE442A316CC4AE8009D60FF /* Player.m in Sources */,
+				DCE442A916CC6226009D60FF /* Computer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
