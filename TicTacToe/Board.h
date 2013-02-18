@@ -1,10 +1,8 @@
 #import <Foundation/Foundation.h>
+#import "Game.h"
 
-@interface Board : NSObject
+@interface Board : NSObject <BoardDelegate>
 
 @property (strong, nonatomic) NSMutableArray *grid;
-
-- (void)draw;
-- (BOOL)squareEmpty:(int)choice;
 
 @end

@@ -1,37 +1,73 @@
 #import "Game.h"
+#import "Board.h"
+#import "Player.h"
+#import "Computer.h"
+
 
 @implementation Game
 
-- (Board *)gameBoard
-{
-    if (!_gameBoard) _gameBoard = [[Board alloc] init];
-    return _gameBoard;
-}
-
 - (BOOL)startGame
 {
-    self.gameBoard = [[Board alloc] init];
-    self.player    = Player.new;
-    self.computer  = Computer.new;
+    self.boardDelegate = [[Board alloc] init];
+    self.playerDelegate = [[Player alloc] init];
+    self.computerDelegate = [[Computer alloc] init];
     
-    [self.player choose:self.gameBoard inGame:self];
+    [self nextTurn:(@"Player")];
+    
     return 0;
 }
 
 - (void)nextTurn:(NSString *)next {
     if ([self checkVictory]) {
         printf("GAME OVER--");
-        exit(0); //FIXME: Why does GAME OVER repeat?
-    } else if ([next isEqualTo:@"Human"]) {
-        [self.player choose:self.gameBoard inGame:self];
-        printf("Human");
+        exit(0);
+    } else if ([next isEqualTo:@"Player"]) {
+        int choice = [self.playerDelegate choose];
+        
+        if ([self checkChoice:(choice)]) {
+            if ([self.boardDelegate squareEmpty:(choice)]) {
+                [self.boardDelegate markSquare:@"X" atSqare:choice];
+                [self.boardDelegate draw];
+                [self nextTurn:(@"Computer")];
+            } else {
+                printf("Sorry, that space is taken.\n");
+                [self nextTurn:(@"Player")];
+            }
+        } else {
+            [self nextTurn:(@"Player")];
+        }
+        
     } else if ([next isEqualTo:@"Computer"]){
-        [self.computer choose:self.gameBoard inGame:self];
-        printf("Computer");
+        int choice = [self.computerDelegate choose];
+        if ([self.boardDelegate squareEmpty:(choice)]) {
+            [self.boardDelegate markSquare:@"O" atSqare:choice];
+            [self.boardDelegate draw];
+            [self nextTurn:@"Player"];
+        } else {
+            [self nextTurn:@"Computer"];
+        }
     }
 }
 
--(BOOL)checkVictory {
+- (BOOL)checkChoice:(int) choice {
+    if (choice > 0 && choice <= 9) {
+        return YES;
+    } else if (choice > 9) {
+        printf("Sorry, your choice can't be above 9.\n");
+    } else if (choice < 0) {
+        printf("Sorry, your choice can't be below 0.\n");
+    } else {
+        printf("Sorry, we need a number for your go.\n");
+        return NO;
+        //TODO - why does this cause an infinite loop?
+        //Passing a non-integer around?
+    }
+    return NO;
+}
+
+
+
+- (BOOL)checkVictory {
     NSArray *winningCombos = @[@[@0, @1, @2],
     @[@3, @4, @5],
     @[@6, @7, @8],
@@ -42,11 +78,11 @@
     @[@2, @4, @6],
     ];
     
-    for (NSArray *array in winningCombos) {
-        if ([self checkForXVictory:array]) {
+    for (NSArray *winningArray in winningCombos) {
+        if ([self checkForXVictory:winningArray]) {
             return YES;
         }
-        if ([self checkForOVictory:array]) {
+        if ([self checkForOVictory:winningArray]) {
             return YES;
         }
     }
@@ -55,19 +91,23 @@
 
 //REVIEW: Is there a better way than splitting this out into two methods?
 
--(BOOL)checkForXVictory:(id)array {
-    if ([[self.gameBoard.grid objectAtIndex:[[array objectAtIndex:0] integerValue]] isEqualTo:@"X"] &&
-        [[self.gameBoard.grid objectAtIndex:[[array objectAtIndex:1] integerValue]] isEqualTo:@"X"] &&
-        [[self.gameBoard.grid objectAtIndex:[[array objectAtIndex:2] integerValue]] isEqualTo:@"X"]) {
+-(BOOL)checkForXVictory:winningArray {
+    NSArray *squares = [self.boardDelegate allSquares];
+    
+    if ([[squares objectAtIndex:[[winningArray objectAtIndex:0] integerValue]] isEqualTo:@"X"] &&
+        [[squares objectAtIndex:[[winningArray objectAtIndex:1] integerValue]] isEqualTo:@"X"] &&
+        [[squares objectAtIndex:[[winningArray objectAtIndex:2] integerValue]] isEqualTo:@"X"]) {
         return YES;
     }
     return NO;
 }
 
--(BOOL)checkForOVictory:(id)array {
-    if ([[self.gameBoard.grid objectAtIndex:[[array objectAtIndex:0] integerValue]] isEqualTo:@"O"] &&
-        [[self.gameBoard.grid objectAtIndex:[[array objectAtIndex:1] integerValue]] isEqualTo:@"O"] &&
-        [[self.gameBoard.grid objectAtIndex:[[array objectAtIndex:2] integerValue]] isEqualTo:@"O"]) {
+-(BOOL)checkForOVictory:winningArray {
+    NSArray *squares = [self.boardDelegate allSquares];
+    
+    if ([[squares objectAtIndex:[[winningArray objectAtIndex:0] integerValue]] isEqualTo:@"O"] &&
+        [[squares objectAtIndex:[[winningArray objectAtIndex:1] integerValue]] isEqualTo:@"O"] &&
+        [[squares objectAtIndex:[[winningArray objectAtIndex:2] integerValue]] isEqualTo:@"O"]) {
         return YES;
     }
     return NO;

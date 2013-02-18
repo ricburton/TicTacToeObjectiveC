@@ -1,18 +1,37 @@
 #import <Foundation/Foundation.h>
-#import "Board.h"
-#import "Player.h"
-#import "Computer.h"
+
+@protocol BoardDelegate <NSObject>
+
+- (void)draw;
+- (BOOL)squareEmpty:(int)choice;
+- (void)markSquare:(NSString *)mark atSqare:(int)choice;
+- (NSArray *)allSquares;
+
+@end
+
+@protocol PlayerDelegate <NSObject>
+
+- (int)choose;
+
+@end
+
+@protocol ComputerDelegate <NSObject>
+
+- (int)choose;
+
+@end
 
 @interface Game : NSObject
 
-@property (strong, nonatomic) Board *gameBoard;
-@property (strong, nonatomic) Player *player;
-@property (strong, nonatomic) Computer *computer;
+@property (strong, nonatomic) id <BoardDelegate> boardDelegate;
+@property (strong, nonatomic) id <PlayerDelegate> playerDelegate;
+@property (strong, nonatomic) id <ComputerDelegate> computerDelegate;
 
 - (BOOL)startGame;
 - (void)nextTurn:(NSString *)next;
+- (BOOL)checkChoice;
 - (BOOL)checkVictory;
-- (BOOL)checkForXVictory:(id)array;
-- (BOOL)checkForOVictory:(id)array;
+- (BOOL)checkForXVictory:winningArray;
+- (BOOL)checkForOVictory:winningArray;
 
 @end

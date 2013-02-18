@@ -4,8 +4,8 @@
 
 //@class Game;
 
-@interface Player : NSObject
+@interface Player : NSObject <PlayerDelegate>
 
--(void) choose:(Board *)board inGame:(Game *)game;
+//-(void) choose:(Board *)board inGame:(Game *)game;
 
 @end

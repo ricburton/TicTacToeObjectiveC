@@ -2,6 +2,6 @@
 #import "Board.h"
 #import "Game.h"
 
-@interface Computer : NSObject
--(void) choose:(Board *) board inGame:(Game *) game;
+@interface Computer : NSObject <ComputerDelegate>
+
 @end

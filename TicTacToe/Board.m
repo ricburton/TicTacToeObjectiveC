@@ -44,11 +44,21 @@
     return [NSString stringWithFormat:@" %@ + %@ + %@ \n", [self.grid objectAtIndex:3 * lineNumber], [self.grid objectAtIndex:3 * lineNumber + 1], [self.grid objectAtIndex:3 * lineNumber + 2]];
 }
 
--(BOOL)squareEmpty:(int)choice {
-    if ([[self.grid objectAtIndex:choice] isNotEqualTo:@"O"] && [[self.grid objectAtIndex:choice] isNotEqualTo:@"X"]) {
+- (BOOL)squareEmpty:(int)choice {
+    if ([[self.grid objectAtIndex:choice - 1] isNotEqualTo:@"O"] && [[self.grid objectAtIndex:choice - 1] isNotEqualTo:@"X"]) {
         return YES;
     }
     return NO;
+}
+
+- (void)markSquare:(NSString *)mark atSqare:(int)choice {
+    [self.grid replaceObjectAtIndex:choice - 1 withObject:mark];
+}
+
+- (NSArray *)allSquares {
+    NSArray *array = [self.grid copy];
+    return array;
+    
 }
 
 @end
