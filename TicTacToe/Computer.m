@@ -6,7 +6,6 @@
     printf("Computer's choice\n");
     int choice = arc4random() %9+1;
     return choice;
-
 }
 
 @end
