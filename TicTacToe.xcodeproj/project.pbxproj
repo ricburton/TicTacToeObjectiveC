@@ -12,7 +12,7 @@
 		DCE4427D16CAF16C009D60FF /* TicTacToe.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = DCE4427C16CAF16C009D60FF /* TicTacToe.1 */; };
 		DCE4429D16CC49A6009D60FF /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE4429C16CC49A5009D60FF /* Game.m */; };
 		DCE442A016CC4A26009D60FF /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE4429F16CC4A26009D60FF /* Board.m */; };
-		DCE442A316CC4AE8009D60FF /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE442A216CC4AE8009D60FF /* Player.m */; };
+		DCE442A316CC4AE8009D60FF /* Human.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE442A216CC4AE8009D60FF /* Human.m */; };
 		DCE442A916CC6226009D60FF /* Computer.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE442A816CC6226009D60FF /* Computer.m */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B6E9C3F16DBE3C700860472 /* PlayerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerProtocol.h; sourceTree = "<group>"; };
 		DCE4427116CAF16C009D60FF /* TicTacToe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TicTacToe; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE4427516CAF16C009D60FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DCE4427816CAF16C009D60FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -39,8 +40,8 @@
 		DCE4429C16CC49A5009D60FF /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		DCE4429E16CC4A26009D60FF /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
 		DCE4429F16CC4A26009D60FF /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
-		DCE442A116CC4AE8009D60FF /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
-		DCE442A216CC4AE8009D60FF /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		DCE442A116CC4AE8009D60FF /* Human.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Human.h; sourceTree = "<group>"; };
+		DCE442A216CC4AE8009D60FF /* Human.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Human.m; sourceTree = "<group>"; };
 		DCE442A716CC6225009D60FF /* Computer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Computer.h; sourceTree = "<group>"; };
 		DCE442A816CC6226009D60FF /* Computer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Computer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,8 +91,9 @@
 				DCE4429C16CC49A5009D60FF /* Game.m */,
 				DCE442A716CC6225009D60FF /* Computer.h */,
 				DCE442A816CC6226009D60FF /* Computer.m */,
-				DCE442A116CC4AE8009D60FF /* Player.h */,
-				DCE442A216CC4AE8009D60FF /* Player.m */,
+				DCE442A116CC4AE8009D60FF /* Human.h */,
+				DCE442A216CC4AE8009D60FF /* Human.m */,
+				3B6E9C3F16DBE3C700860472 /* PlayerProtocol.h */,
 				DCE4429E16CC4A26009D60FF /* Board.h */,
 				DCE4429F16CC4A26009D60FF /* Board.m */,
 				DCE4427C16CAF16C009D60FF /* TicTacToe.1 */,
@@ -162,7 +164,7 @@
 				DCE4427916CAF16C009D60FF /* main.m in Sources */,
 				DCE4429D16CC49A6009D60FF /* Game.m in Sources */,
 				DCE442A016CC4A26009D60FF /* Board.m in Sources */,
-				DCE442A316CC4AE8009D60FF /* Player.m in Sources */,
+				DCE442A316CC4AE8009D60FF /* Human.m in Sources */,
 				DCE442A916CC6226009D60FF /* Computer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +262,7 @@
 				DCE4428216CAF16C009D60FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

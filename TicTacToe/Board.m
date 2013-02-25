@@ -8,11 +8,13 @@
 
 - (NSString *)lineText:(NSInteger)lineNumber;
 
+- (void)draw;
+
 @end
 
 @implementation Board
-
 @synthesize grid = _grid;
+@synthesize winningCombos = _winningCombos;
 
 - (id)init
 {
@@ -26,6 +28,21 @@
         [self draw];
     }
     return self;
+}
+
+- (NSArray *)winningCombos {
+    if (!_winningCombos) {
+        _winningCombos = @[@[@0, @1, @2],
+                           @[@3, @4, @5],
+                           @[@6, @7, @8],
+                           @[@0, @3, @6],
+                           @[@1, @4, @7],
+                           @[@2, @5, @8],
+                           @[@0, @4, @8],
+                           @[@2, @4, @6]
+                           ];
+    }
+    return _winningCombos;
 }
 
 - (void)draw
@@ -44,21 +61,20 @@
     return [NSString stringWithFormat:@" %@ + %@ + %@ \n", [self.grid objectAtIndex:3 * lineNumber], [self.grid objectAtIndex:3 * lineNumber + 1], [self.grid objectAtIndex:3 * lineNumber + 2]];
 }
 
-- (BOOL)squareEmpty:(int)choice {
-    if ([[self.grid objectAtIndex:choice - 1] isNotEqualTo:@"O"] && [[self.grid objectAtIndex:choice - 1] isNotEqualTo:@"X"]) {
-        return YES;
-    }
-    return NO;
-}
-
 - (void)markSquare:(NSString *)mark atSqare:(int)choice {
     [self.grid replaceObjectAtIndex:choice - 1 withObject:mark];
+    [self draw];
 }
 
-- (NSArray *)allSquares {
-    NSArray *array = [self.grid copy];
-    return array;
-    
+- (NSArray *)possibleChoices
+{
+    NSMutableArray *possibilities = [NSMutableArray arrayWithCapacity:9];
+    for (id obj in self.grid) {
+        if ([obj isKindOfClass:[NSNumber class]]) {
+            [possibilities addObject:obj];
+        }
+    }
+    return [possibilities copy];
 }
 
 @end
