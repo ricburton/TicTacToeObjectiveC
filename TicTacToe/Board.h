@@ -1,8 +1,11 @@
 #import <Foundation/Foundation.h>
-#import "Game.h"
 
-@interface Board : NSObject <BoardDelegate>
+@interface Board : NSObject
 
 @property (strong, nonatomic) NSMutableArray *grid;
+@property (readonly, nonatomic) NSArray *possibleChoices;
+@property (readonly, nonatomic) NSArray *winningCombos;
+
+- (void)markSquare:(NSString *)mark atSqare:(int)choice;
 
 @end

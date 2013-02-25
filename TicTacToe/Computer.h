@@ -1,7 +1,6 @@
 #import <Foundation/Foundation.h>
-#import "Board.h"
-#import "Game.h"
+#import "PlayerProtocol.h"
 
-@interface Computer : NSObject <ComputerDelegate>
+@interface Computer : NSObject <PlayerProtocol>
 
 @end

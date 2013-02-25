@@ -1,37 +1,16 @@
 #import <Foundation/Foundation.h>
-
-@protocol BoardDelegate <NSObject>
-
-- (void)draw;
-- (BOOL)squareEmpty:(int)choice;
-- (void)markSquare:(NSString *)mark atSqare:(int)choice;
-- (NSArray *)allSquares;
-
-@end
-
-@protocol PlayerDelegate <NSObject>
-
-- (int)choose;
-
-@end
-
-@protocol ComputerDelegate <NSObject>
-
-- (int)choose;
-
-@end
+#import "PlayerProtocol.h"
+#import "Board.h"
 
 @interface Game : NSObject
 
-@property (strong, nonatomic) id <BoardDelegate> boardDelegate;
-@property (strong, nonatomic) id <PlayerDelegate> playerDelegate;
-@property (strong, nonatomic) id <ComputerDelegate> computerDelegate;
+@property (strong, nonatomic) Board *board;
+@property (strong, nonatomic) NSArray *players;
+@property (strong, nonatomic) Class <PlayerProtocol> currentPlayer;
+@property (readonly, nonatomic) Class <PlayerProtocol> nextPlayer;
 
 - (BOOL)startGame;
-- (void)nextTurn:(NSString *)next;
-- (BOOL)checkChoice;
-- (BOOL)checkVictory;
-- (BOOL)checkForXVictory:winningArray;
-- (BOOL)checkForOVictory:winningArray;
+- (void)nextTurn:(Class <PlayerProtocol>)player;
+- (BOOL)checkVictory:(Class <PlayerProtocol>)player;
 
 @end

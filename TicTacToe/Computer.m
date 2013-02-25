@@ -2,10 +2,15 @@
 
 @implementation Computer
 
-- (int) choose {
++ (int)chooseFromPossibilities:(NSArray *)choices {
     printf("Computer's choice\n");
-    int choice = arc4random() %9+1;
-    return choice;
+    int index = arc4random() % choices.count;
+    return [[choices objectAtIndex:index] intValue];
+}
+
++ (NSString *)marker
+{
+    return @"O";
 }
 
 @end
